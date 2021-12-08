@@ -3,7 +3,6 @@ import csv
 import os
 import numpy as np
 import psycopg2
-from getpass import getpass
 from PostgreSql_access import password
 from PostgreSql_access import host
 

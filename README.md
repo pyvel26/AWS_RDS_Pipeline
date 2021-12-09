@@ -35,7 +35,7 @@ In order to view your database and the table created by this script, you will ne
 
 
 
-## :skull_and_crossbones:Handling Passwords On Files
+## :skull_and_crossbones:Handling Passwords In Scripts
 Never put raw passwords or access codes in your scripts. For this project, I chose to create a python script and save my password and host as a string variable.
 Next, I imported both variables (host, password) in the data cleansing script as shown below.  When you create the database connection, you can simply put the word 'host' and 'password' instead of type the actual information.  The script will read the actual string from the python script you've imported.  
 

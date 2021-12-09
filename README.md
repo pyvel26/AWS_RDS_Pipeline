@@ -1,5 +1,5 @@
 ### AWS_RDS_Pipeline
-# CREATE YOUR FIRST CLOUD DATA PIPELINE
+# CREATE YOUR FIRST CLOUD DATA PIPELINE :computer::cloud:
 
 ## Description
 
@@ -26,7 +26,7 @@ Open your favorite interpreter and import all the necessary libraries. Feel free
 At this point, you've created the AWS free tier account, AWS RDS instance for PostgreSQL and successfully ran your python script.
 In order to view your database and the table created by this script, you will need to access your PostgreSQL instance by any GUI for PostgreSQL. I posted the screenshots for PgAdmin and the instructions below to accomplish this task.
 
-## Connecting PgAdmin to AWS RDS PostgreSQL instance
+## :boom::boom:Connecting PgAdmin to AWS RDS PostgreSQL instance:boom:
 - Log into Pgadmin
 - Right click servers and select Create
 - On the General Tab,enter your AWS RDS server name
@@ -35,11 +35,11 @@ In order to view your database and the table created by this script, you will ne
 
 
 
-## Handling Passwords On Files
+## :skull_and_crossbones:Handling Passwords On Files
 Never put raw passwords or access codes in your scripts. For this project, I chose to create a python script and save my password and host as a string variable.
 Next, I imported both variables (host, password) in the data cleansing script as shown below.  When you create the database connection, you can simply put the word 'host' and 'password' instead of type the actual information.  The script will read the actual string from the python script you've imported.  
 
-
+:EMOJICODE:
 from PostgreSql_access import password
 from PostgreSql_access import host
 

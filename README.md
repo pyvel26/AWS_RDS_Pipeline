@@ -39,10 +39,16 @@ In order to view your database and the table created by this script, you will ne
 Never put raw passwords or access codes in your scripts. For this project, I chose to create a python script and save my password and host as a string variable.
 Next, I imported both variables (host, password) in the data cleansing script as shown below.  When you create the database connection, you can simply put the word 'host' and 'password' instead of type the actual information.  The script will read the actual string from the python script you've imported.  
 
-:EMOJICODE:
-from PostgreSql_access import password
+
+
+from PostgreSql_access import password\
 from PostgreSql_access import host
 
 
 ## Link To My Data Analysis Portfolio
 (https://www.behance.net/gallery/127131435/Data-Analysis-Portfolio)
+
+Job Opportunities : :mailbox_with_mail: estervellebennett@gmail.com
+
+
+:EMOJICODE:

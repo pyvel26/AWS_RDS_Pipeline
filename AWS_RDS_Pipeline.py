@@ -86,13 +86,21 @@ my_file = open('customer_contracts.csv')
 print('file opened in memory')
 
 # Copy contents of the CSV file into PostgreSQL RDS instance
+# Be sure you have setup an RDS instance(server) with AWS and connected the server using Pgadmin
+
+
+# COPY moves data between PostgreSQL tables and standard file-system files.
+# STDIN specifies that input comes from the client application which is this script. 
+# CSV Header is letting Postgres know to expect a CSV file with a Header
+# Delimiter tells Postgres that each column is separated by a comma
+
 Sql_query = '''
 COPY customer_contracts FROM STDIN With
     CSV
     Header
     Delimiter As',' 
 '''
-
+# Sending the copied contents as a file object to Postgres
 try:
     cursor.copy_expert(Sql_query, file = my_file)
 except:
@@ -105,7 +113,9 @@ cursor.execute ("grant select on table customer_contracts to public")
 #Always commit for changes to take effect and close the connect afterwards
 conn.commit()
 
+# Always close the cursor upon completion
+# Starting the connection with "with open" would close the cursor automatically after data transfer.   
 cursor.close()
-
+# Printing a message just for confirmation
 print("Table customer_contracts import to db completed")
 

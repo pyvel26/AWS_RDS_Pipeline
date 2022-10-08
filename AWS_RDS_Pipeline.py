@@ -1,12 +1,14 @@
-import pandas as pd
-import csv
-import os
-import numpy as np
-import psycopg2
-from PostgreSql_access import password
-from PostgreSql_access import host
+import pandas as pd # Data Analytics library
+import csv # Allow us to import csv files we can also use pd.read_csv from the pandas library
+import os # Module that allows us to carry out tasks on the local operation system
+import psycopg2 # A driver that allows us to use Python to work with Postgres
+from PostgreSql_access import password # Save password in a local file and import it into this script
+from PostgreSql_access import host # Saved host in a local file and import it into this script
+# There are many methods for saving credentials, environment variables are another option
+# Never keep raw credentials in your python scripts
 
 '''
+***Goals***
 - Import the CSV file into pandas
 - Clean the table name and remove all extra symbols, spaces, capital letters
 - The goal is to complete tasks that are too complex for a database
@@ -29,6 +31,11 @@ clean_tbl_name = file.lower().replace(" ","_").replace("#","") \
 .replace(")","").replace(r"(","").replace("$","")
 
 #List comprehension that loops through list of column names and remove unwanted characters
+# df.columns- Lists all column names
+# we loop through each column as x represents each individual column name
+# x.lower - puts the column name in lower case. I could use x.Upper() to capitalize the first letter or x.capitalize() for all Caps
+# replace(" ", "_") - First quotation represent the search pattern or value we want to replace. Second quotation defines the replacement values. 
+# \ tells the interpreter that the code continues on the next line
 df.columns = [x.lower().replace(" ","_").replace("","") \
 .replace("-","_").replace(r"/","_").replace("\\","_").replace("*","") \
 .replace(")","").replace(r"(","").replace("$","").replace("#","") for x in df.columns]
@@ -53,13 +60,10 @@ replacements ={'object' : 'varchar' ,'float64' : 'float',
 
 
 #This code replaces the pandas data types with the postgreSql data types, join them with the Sql column names,
-#place a comma after the name and data type and repeat this process for each column.
+#place a comma after the name and data type and repeat this process for each column name.
 col_str = ",".join("{} {}".format(n, d) for (n, d) in zip(df.columns, df.dtypes.replace(replacements)))
 
 #Create the postgreSQL database connection with the psycopg2 api.
-#You will use the host information to connect to your RDS instance; therefore keep this information handy.
-#Another rule of thumb is to never put password directly onto a file due to sql injection concerns.
-#I saved my host and password as string variables on a local file and imported them both for this project.
 
 conn = psycopg2.connect(host= host,
                         dbname='my_database',

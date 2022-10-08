@@ -1,9 +1,9 @@
 import pandas as pd # Data Analytics library
-import csv # Allow us to import csv files we can also use pd.read_csv from the pandas library
+import csv # Allow us to import csv files. We can also use pd.read_csv from the pandas library
 import os # Module that allows us to carry out tasks on the local operation system
 import psycopg2 # A driver that allows us to use Python to work with Postgres
-from PostgreSql_access import password # Save password in a local file and import it into this script
-from PostgreSql_access import host # Saved host in a local file and import it into this script
+from PostgreSql_access import password # Save password in a local file and imported it into this script as a library
+from PostgreSql_access import host # Saved host in a local file and imported it into this script as a library
 # There are many methods for saving credentials, environment variables are another option
 # Never keep raw credentials in your python scripts
 
